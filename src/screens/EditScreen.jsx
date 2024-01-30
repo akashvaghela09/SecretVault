@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const EditScreen = ({ route, navigation }) => {
@@ -13,7 +13,7 @@ export const EditScreen = ({ route, navigation }) => {
       let parsedList = jsonList != null ? JSON.parse(jsonList) : [];
 
       // Update the text for the specific item using the id
-      const updatedList = parsedList.map(item => {
+      const updatedList = parsedList.map((item) => {
         if (item.id === id) {
           return { ...item, text: editedText };
         }
@@ -37,14 +37,13 @@ export const EditScreen = ({ route, navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Edit Screen</Text>
-      <View>
-        <TextInput
-          value={editedText}
-          onChangeText={setEditedText}
-          style={styles.input}
-        />
+    <View style={styles.wrapper}>
+      <TextInput
+        value={editedText}
+        onChangeText={setEditedText}
+        style={styles.input}
+      />
+      <View style={styles.buttonWrapper}>
         <Button title="Save" onPress={handleSave} />
         <Button title="Cancel" onPress={handleCancel} />
       </View>
@@ -53,10 +52,23 @@ export const EditScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
+  wrapper: {
+    backgroundColor: "#334155",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     padding: 10,
   },
+  input: {
+    margin: 12,
+    borderWidth: 1,
+    padding: 6,
+    backgroundColor: "white",
+    width: "80%",
+    fontSize: 16
+  },
+  buttonWrapper: {
+    flexDirection: "row",
+    gap: 20
+  }
 });

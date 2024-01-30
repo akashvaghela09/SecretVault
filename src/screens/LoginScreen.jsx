@@ -38,8 +38,8 @@ export const LoginScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View>
-      <Text>Login PIN</Text>
+    <View style={styles.wrapper}>
+      <Text style={styles.title}>Login PIN</Text>
       <TextInput
         placeholder="010203"
         onChangeText={setPin}
@@ -52,10 +52,23 @@ export const LoginScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: "#334155",
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    color: "white",
+    fontSize: 30,
+    textAlign: "center"
+  },
   input: {
-    height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
-  },
+    padding: 6,
+    backgroundColor: "white",
+    width: "25%",
+    fontSize: 16
+  }
 });
